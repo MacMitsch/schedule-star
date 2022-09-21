@@ -20,16 +20,20 @@ $(document).ready(function () {
     $(".time-block").each(function () {
       var blockTime = parseInt($(this).attr("id").split("hour")[1])
     
-
+        // sweep through conditions to determine the status of the time block
       if (blockTime < currentHour) {
-        $(this).removeClass("future");
+        $(this).addClass("past");
+       
       } else if (blockTime === currentHour) {
         $(this).addClass("present");
+     
       } else {
-        $(this).addClass("past");
+        $(this).addClass("future");
+    
       }
     })
   }
+//   retrieves the stored data from the local storage based off the id.
   $("#hour8 .description").text(localStorage.getItem("hour8"));
   $("#hour9 .description").text(localStorage.getItem("hour9"));
   $("#hour10 .description").text(localStorage.getItem("hour10"));
