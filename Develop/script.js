@@ -9,7 +9,7 @@ $(document).ready(function () {
     var text = $(this).siblings(".description").val();
     var time = $(this).parent().attr("id");
 
-    localStorage.setItem(text, time);
+    localStorage.setItem(time, text);
   })
  
 
@@ -18,15 +18,15 @@ $(document).ready(function () {
 
     // Loop function for the Time block
     $(".time-block").each(function () {
-      var blockHour = parseInt($(this).attr("id").split("hour")[1])
+      var blockTime = parseInt($(this).attr("id").split("hour")[1])
     
 
-      if (blockHour < currentHour) {
+      if (blockTime < currentHour) {
         $(this).removeClass("future");
-      } else if (blockHour === currentHour) {
+      } else if (blockTime === currentHour) {
         $(this).addClass("present");
       } else {
-        $(this).removeClass("past");
+        $(this).addClass("past");
       }
     })
   }
@@ -41,6 +41,7 @@ $(document).ready(function () {
   $("#hour16 .description").text(localStorage.getItem("hour16"));
   $("#hour17 .description").text(localStorage.getItem("hour17"));
   $("#hour18 .description").text(localStorage.getItem("hour18"));
+
 
   hourEvents();
 })
