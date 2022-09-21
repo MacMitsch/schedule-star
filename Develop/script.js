@@ -1,24 +1,24 @@
 
-$(document).ready(function () {
+$(document).ready(() => {
 
 //uses moment.js to get the date 
   $("#currentDay").text(moment().format("dddd, MMM Do YYYY "))
-
+// Save Button to listen for Clicks
   $(".saveBtn").on("click", function () {
 
-    var text = $(this).siblings(".description").val();
-    var time = $(this).parent().attr("id");
+    const text = $(this).siblings(".description").val();
+    const time = $(this).parent().attr("id");
 
     localStorage.setItem(time, text);
   })
  
 
-  function hourEvents() {
-    var currentHour = moment().hour();
+ function hourEvents() {
+    const currentHour = moment().hour();
 
     // Loop function for the Time block
     $(".time-block").each(function () {
-      var blockTime = parseInt($(this).attr("id").split("hour")[1])
+      const blockTime = parseInt($(this).attr("id").split("hour")[1])
     
         // sweep through conditions to determine the status of the time block
       if (blockTime < currentHour) {
